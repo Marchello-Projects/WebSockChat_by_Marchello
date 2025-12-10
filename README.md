@@ -1,7 +1,7 @@
 ![Logo](./img%20&%20videos/Group%205.png)
 
-> [!INFO]
-> This project was created to reinforce knowledge on WebSocket and JWT (JSON Web Token)
+>[!INFO]
+>This project was created to reinforce knowledge on WebSocket and JWT (JSON Web Token)
 
 ## Technologies used:
 
