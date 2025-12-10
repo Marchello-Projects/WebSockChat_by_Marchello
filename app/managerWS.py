@@ -41,7 +41,6 @@ class ModerationManager:
         self.logs: List[str] = []
 
     def _normalize_username(self, username: str) -> str:
-        """Приводим имя к единому виду: нижний регистр + убираем пробелы по краям"""
         return username.strip().lower()
 
     def check_permissions(self, user_role: str, required_role: str) -> bool:

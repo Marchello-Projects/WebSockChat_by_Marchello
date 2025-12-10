@@ -11,6 +11,8 @@ from app.routes.auth import get_user_from_token_ws_db
 app = FastAPI(
     title="WebSockChat",
     description="Online chat using the WebSocket protocol",
+    # year.month.day.major.minor
+    version="25.12.10.1.0",
     contact={
         "name": "Marchello",
         "url": "https://github.com/Marchello-Projects",
