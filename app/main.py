@@ -12,7 +12,7 @@ app = FastAPI(
     title="WebSockChat",
     description="Online chat using the WebSocket protocol",
     # year.month.day.major.minor
-    version="25.12.10.1.0",
+    version="25.12.10.1.1",
     contact={
         "name": "Marchello",
         "url": "https://github.com/Marchello-Projects",
