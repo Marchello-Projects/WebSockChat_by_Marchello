@@ -1,11 +1,12 @@
 import uvicorn
-from fastapi import FastAPI, WebSocket, WebSocketDisconnect, status, HTTPException
+from fastapi import (FastAPI, HTTPException, WebSocket, WebSocketDisconnect,
+                     status)
 from sqlalchemy.orm import Session
 
-from app.managerWS import manager, moderation  
+from app.config.configdb import get_db
+from app.managerWS import manager, moderation
 from app.routes import auth_router
 from app.routes.auth import get_user_from_token_ws_db
-from app.config.configdb import get_db
 
 app = FastAPI(
     title="WebSockChat",

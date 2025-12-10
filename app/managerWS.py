@@ -1,7 +1,9 @@
-from typing import List, Dict
 from datetime import datetime, timedelta
-from app.database.models import UserRole
+from typing import Dict, List
+
 from fastapi import WebSocket
+
+from app.database.models import UserRole
 
 
 class ConnectionManager:
@@ -20,10 +22,10 @@ class ConnectionManager:
         try:
             await websocket.send_text(message)
         except:
-            pass  
+            pass
 
     async def broadcast(self, message: str, sender: WebSocket | None = None):
-        for connection in self.active_connections[:]: 
+        for connection in self.active_connections[:]:
             if connection != sender:
                 try:
                     await connection.send_text(message)
@@ -33,8 +35,8 @@ class ConnectionManager:
 
 class ModerationManager:
     def __init__(self):
-        self.banned_users: set[str] = set()  
-        self.muted_users: Dict[str, datetime] = {} 
+        self.banned_users: set[str] = set()
+        self.muted_users: Dict[str, datetime] = {}
         self.forbidden_words: List[str] = ["badword1", "badword2"]
         self.logs: List[str] = []
 
@@ -46,7 +48,7 @@ class ModerationManager:
         roles_order = [
             UserRole.USER.value,
             UserRole.MODERATOR.value,
-            UserRole.ADMIN.value
+            UserRole.ADMIN.value,
         ]
         return roles_order.index(user_role) >= roles_order.index(required_role)
 
@@ -73,7 +75,9 @@ class ModerationManager:
                 return "No permission to mute"
             mute_until = now + timedelta(minutes=5)
             self.muted_users[target] = mute_until
-            self.logs.append(f"{now} - {issuer_user.username} muted {target_raw} until {mute_until}")
+            self.logs.append(
+                f"{now} - {issuer_user.username} muted {target_raw} until {mute_until}"
+            )
             return f"User {target_raw} muted until {mute_until:%Y-%m-%d %H:%M:%S}"
 
         if action == "/warn":
@@ -107,4 +111,4 @@ class ModerationManager:
 
 
 manager = ConnectionManager()
-moderation = ModerationManager()  
+moderation = ModerationManager()
