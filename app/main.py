@@ -17,7 +17,7 @@ app = FastAPI(
         "name": "Marchello",
         "url": "https://github.com/Marchello-Projects",
         "email": "paskalovmarkus@gmail.com",
-    },
+    }
 )
 
 app.include_router(auth_router)
