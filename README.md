@@ -22,8 +22,6 @@
 
 ## Getting Started
 
-Follow these steps to run the Telegram bot locally:
-
 ### 1. Clone the repository
 
 ```bash
